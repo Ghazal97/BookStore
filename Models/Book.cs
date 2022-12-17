@@ -8,6 +8,10 @@
 
         public string Description { get; set; }
 
+        //image name or image path
+        public string ImageUrl { get; set; }
+
+
         public Author Autho { get; set; }
     }
 }

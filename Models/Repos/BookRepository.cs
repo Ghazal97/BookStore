@@ -12,16 +12,16 @@ namespace Bookstore.Models.Repos
             books = new List<Book>() 
             { 
                 new Book
-                {Id = 1, Title ="C# tutorial", Description="easy c# learning"
+                {Id = 1, Title ="C# tutorial", Description="easy c# learning",Autho= new Author {Id = 2}
                 },
                 new Book
-                {Id = 1, Title ="java tutorial", Description="easy j  learning"
+                {Id = 2, Title ="java tutorial", Description="easy j  learning" ,Autho = new Author{}
                 },
                 new Book
-                {Id = 1, Title ="Python tutorial", Description="easy  p learning"
+                {Id = 3, Title ="Python tutorial", Description="easy  p learning" ,Autho = new Author{}
                 },
                 new Book
-                {Id = 1, Title ="Angular tutorial", Description="easy A learning"
+                {Id = 4, Title ="Angular tutorial", Description="easy A learning" ,Autho = new Author{}
                 }
 
             };
@@ -29,6 +29,7 @@ namespace Bookstore.Models.Repos
 
         public void Add(Book entity)
         {
+            entity.Id = books.Max(b => b.Id) + 1;
             books.Add(entity);
         }
 
