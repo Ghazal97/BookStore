@@ -12,16 +12,26 @@ namespace Bookstore.Models.Repos
             books = new List<Book>() 
             { 
                 new Book
-                {Id = 1, Title ="C# tutorial", Description="easy c# learning",Autho= new Author {Id = 2}
+                {Id = 1,
+                   Title ="C# tutorial",
+                    Description="easy c# learning",
+                    Autho= new Author {Id = 2},
+                    ImageUrl = "data.png"
                 },
                 new Book
-                {Id = 2, Title ="java tutorial", Description="easy j  learning" ,Autho = new Author{}
+                {Id = 2, Title ="java tutorial",
+                    Description="easy j  learning" ,Autho = new Author{},
+                    ImageUrl = "data.png"
                 },
                 new Book
-                {Id = 3, Title ="Python tutorial", Description="easy  p learning" ,Autho = new Author{}
+                {Id = 3, Title ="Python tutorial",
+                    Description="easy  p learning" ,Autho = new Author{},
+                    ImageUrl = "data.png"
                 },
                 new Book
-                {Id = 4, Title ="Angular tutorial", Description="easy A learning" ,Autho = new Author{}
+                {Id = 4, Title ="Angular tutorial",
+                    Description="easy A learning" ,Autho = new Author{},
+                    ImageUrl = "data.png"
                 }
 
             };
@@ -56,6 +66,7 @@ namespace Bookstore.Models.Repos
             book.Title = entity.Title;
             book.Description = entity.Description;
             book.Autho = entity.Autho;
+            book.ImageUrl = entity.ImageUrl;
  
 
         }

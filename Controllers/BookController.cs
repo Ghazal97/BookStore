@@ -123,12 +123,30 @@ namespace Bookstore.Controllers
         {
             try
             {
+                string filename = string.Empty;
+                if(model.File != null)
+                {
+                    string rootpath = Path.Combine(hostingEnvironment.WebRootPath,"Uploads");
+                    filename = model.File.FileName;
+                    string fullpath = Path.Combine(rootpath,filename);
+                    //delete old file 
+                    string oldfilepath = bookstoreRepository.GetEntity(model.BookId).ImageUrl;
+                    string fulloldpath = Path.Combine(rootpath,oldfilepath);
+                    if (fulloldpath != fullpath)
+                    {
+                        System.IO.File.Delete(fulloldpath);
+
+                        // save the new file
+                        model.File.CopyTo(new FileStream(fullpath, FileMode.Create));
+                    }
+                }
                 var author = authorRepository.GetEntity(model.AuthorId);
                 var book = new Book
                 {
                     Title = model.Title,
                     Description = model.Description,
-                    Autho = author
+                    Autho = author,
+                    ImageUrl=filename
                 };
                 bookstoreRepository.Update(model.BookId,book);
 
