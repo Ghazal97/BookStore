@@ -118,15 +118,39 @@ namespace Bookstore.Controllers
         {
             try
             {
+<<<<<<< HEAD
                 string filename = UploadFile(model.File,model.UrlImage);
                 
+=======
+                string filename = string.Empty;
+                if(model.File != null)
+                {
+                    string rootpath = Path.Combine(hostingEnvironment.WebRootPath,"Uploads");
+                    filename = model.File.FileName;
+                    string fullpath = Path.Combine(rootpath,filename);
+                    //delete old file 
+                    string oldfilepath = bookstoreRepository.GetEntity(model.BookId).ImageUrl;
+                    string fulloldpath = Path.Combine(rootpath,oldfilepath);
+                    if (fulloldpath != fullpath)
+                    {
+                        System.IO.File.Delete(fulloldpath);
+
+                        // save the new file
+                        model.File.CopyTo(new FileStream(fullpath, FileMode.Create));
+                    }
+                }
+>>>>>>> 5d1c906842388b669b23cd2408486d226166797e
                 var author = authorRepository.GetEntity(model.AuthorId);
                 var book = new Book
                 {
                     Id = model.BookId,
                     Title = model.Title,
                     Description = model.Description,
+<<<<<<< HEAD
                     Author = author,
+=======
+                    Autho = author,
+>>>>>>> 5d1c906842388b669b23cd2408486d226166797e
                     ImageUrl=filename
                 };
                 bookstoreRepository.Update(model.BookId,book);

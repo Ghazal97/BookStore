@@ -15,22 +15,38 @@ namespace Bookstore.Models.Repos
                 {Id = 1,
                    Title ="C# tutorial",
                     Description="easy c# learning",
+<<<<<<< HEAD
                     Author= new Author {Id = 2},
+=======
+                    Autho= new Author {Id = 2},
+>>>>>>> 5d1c906842388b669b23cd2408486d226166797e
                     ImageUrl = "data.png"
                 },
                 new Book
                 {Id = 2, Title ="java tutorial",
+<<<<<<< HEAD
                     Description="easy j  learning" ,Author = new Author{},
+=======
+                    Description="easy j  learning" ,Autho = new Author{},
+>>>>>>> 5d1c906842388b669b23cd2408486d226166797e
                     ImageUrl = "data.png"
                 },
                 new Book
                 {Id = 3, Title ="Python tutorial",
+<<<<<<< HEAD
                     Description="easy  p learning" ,Author = new Author{},
+=======
+                    Description="easy  p learning" ,Autho = new Author{},
+>>>>>>> 5d1c906842388b669b23cd2408486d226166797e
                     ImageUrl = "data.png"
                 },
                 new Book
                 {Id = 4, Title ="Angular tutorial",
+<<<<<<< HEAD
                     Description="easy A learning" ,Author = new Author{},
+=======
+                    Description="easy A learning" ,Autho = new Author{},
+>>>>>>> 5d1c906842388b669b23cd2408486d226166797e
                     ImageUrl = "data.png"
                 }
 
@@ -65,7 +81,11 @@ namespace Bookstore.Models.Repos
             var book = GetEntity(id);
             book.Title = entity.Title;
             book.Description = entity.Description;
+<<<<<<< HEAD
             book.Author = entity.Author;
+=======
+            book.Autho = entity.Autho;
+>>>>>>> 5d1c906842388b669b23cd2408486d226166797e
             book.ImageUrl = entity.ImageUrl;
  
 

@@ -38,7 +38,11 @@ namespace Bookstore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+<<<<<<< HEAD
                     b.Property<int?>("AuthorId");
+=======
+                    b.Property<int?>("AuthoId");
+>>>>>>> 5d1c906842388b669b23cd2408486d226166797e
 
                     b.Property<string>("Description");
 
@@ -48,16 +52,26 @@ namespace Bookstore.Migrations
 
                     b.HasKey("Id");
 
+<<<<<<< HEAD
                     b.HasIndex("AuthorId");
+=======
+                    b.HasIndex("AuthoId");
+>>>>>>> 5d1c906842388b669b23cd2408486d226166797e
 
                     b.ToTable("Books");
                 });
 
             modelBuilder.Entity("Bookstore.Models.Book", b =>
                 {
+<<<<<<< HEAD
                     b.HasOne("Bookstore.Models.Author", "Author")
                         .WithMany()
                         .HasForeignKey("AuthorId");
+=======
+                    b.HasOne("Bookstore.Models.Author", "Autho")
+                        .WithMany()
+                        .HasForeignKey("AuthoId");
+>>>>>>> 5d1c906842388b669b23cd2408486d226166797e
                 });
 #pragma warning restore 612, 618
         }
