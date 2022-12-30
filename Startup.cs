@@ -4,10 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-<<<<<<< HEAD
 using Microsoft.AspNetCore.Routing;
-=======
->>>>>>> 5d1c906842388b669b23cd2408486d226166797e
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

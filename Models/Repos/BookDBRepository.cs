@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-﻿using Microsoft.EntityFrameworkCore;
+
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-=======
-﻿using System.Collections.Generic;
->>>>>>> 5d1c906842388b669b23cd2408486d226166797e
 using System.Linq;
 
 namespace Bookstore.Models.Repos
@@ -31,20 +28,19 @@ namespace Bookstore.Models.Repos
 
         public Book GetEntity(int id)
         {
-<<<<<<< HEAD
             return db.Books.Include(a => a.Author).SingleOrDefault(b => b.Id == id);
-=======
+
             return db.Books.SingleOrDefault(b => b.Id == id);
->>>>>>> 5d1c906842388b669b23cd2408486d226166797e
+
         }
 
         public IList<Book> List()
         {
-<<<<<<< HEAD
+
             return db.Books.Include(a => a.Author).ToList();
-=======
+
             return db.Books.ToList();
->>>>>>> 5d1c906842388b669b23cd2408486d226166797e
+
         }
 
         public void Update(int id, Book entity)
