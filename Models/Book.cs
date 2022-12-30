@@ -12,6 +12,6 @@
         public string ImageUrl { get; set; }
 
 
-        public Author Autho { get; set; }
+        public Author Author { get; set; }
     }
 }

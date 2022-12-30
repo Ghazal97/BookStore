@@ -2,8 +2,8 @@
 using Bookstore.Models.Repos;
 using Bookstore.ViewModels;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -56,14 +56,8 @@ namespace Bookstore.Controllers
         {
             if (ModelState.IsValid)
             {
-                string filename = string.Empty;
-                if (model.File != null)
-                {
-                    string pathroot = Path.Combine(hostingEnvironment.WebRootPath,"Uploads");
-                    filename = model.File.FileName;
-                    string fullPath = Path.Combine(pathroot, filename);
-                    model.File.CopyTo(new FileStream(fullPath,FileMode.Create));
-                }
+                string filename = UploadFile(model.File) ?? string.Empty;
+                
                 try
                 {
                     if (model.AuthorId == -1)
@@ -78,7 +72,7 @@ namespace Bookstore.Controllers
                         Id = model.BookId,
                         Title = model.Title,
                         Description = model.Description,
-                        Autho = author,
+                        Author = author,
                         ImageUrl = filename
                         
                     };
@@ -99,9 +93,10 @@ namespace Bookstore.Controllers
         // GET: BookController/Edit/5
         public ActionResult Edit(int id)
         {
+            //0994135019
           
             var book = bookstoreRepository.GetEntity(id);
-            var authid = book.Autho == null ? book.Autho.Id = 0 : book.Autho.Id;
+            var authid = book.Author == null ? book.Author.Id = 0 : book.Author.Id;
             var mode = new BookAuthorViewModel()
             {
                 BookId = book.Id,
@@ -123,12 +118,16 @@ namespace Bookstore.Controllers
         {
             try
             {
+                string filename = UploadFile(model.File,model.UrlImage);
+                
                 var author = authorRepository.GetEntity(model.AuthorId);
                 var book = new Book
                 {
+                    Id = model.BookId,
                     Title = model.Title,
                     Description = model.Description,
-                    Autho = author
+                    Author = author,
+                    ImageUrl=filename
                 };
                 bookstoreRepository.Update(model.BookId,book);
 
@@ -180,6 +179,39 @@ namespace Bookstore.Controllers
 
             };
             return model;
+        }
+
+        string UploadFile(IFormFile File)
+        {
+            if (File != null)
+            {
+                string uploads = Path.Combine(hostingEnvironment.WebRootPath, "Uploads");
+                string fullPath = Path.Combine(uploads, File.FileName);
+                File.CopyTo(new FileStream(fullPath, FileMode.Create));
+                return File.FileName;
+            }
+            return null;
+            
+        }
+
+        string UploadFile(IFormFile File, string imageUrl)
+        {
+            if (File != null)
+            {
+                string rootpath = Path.Combine(hostingEnvironment.WebRootPath, "Uploads");
+                string newpath = Path.Combine(rootpath, File.FileName);
+                string oldpath = Path.Combine(rootpath, imageUrl);
+                if (newpath != oldpath)
+                {
+                    System.IO.File.Delete(oldpath);
+
+                    // save the new file
+                    File.CopyTo(new FileStream(newpath, FileMode.Create));
+                    
+                }
+                return File.FileName;
+            }
+            return imageUrl;
         }
     }
 }

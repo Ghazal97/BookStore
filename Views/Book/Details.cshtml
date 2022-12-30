@@ -29,10 +29,10 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Autho.Fullname)
+            @Html.DisplayNameFor(model => model.Author.Fullname)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Autho.Fullname)
+            @Html.DisplayFor(model => model.Author.Fullname)
         </dd>
         @if(Model.ImageUrl != null)
             {
@@ -45,6 +45,6 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new {  id = Model.Id  }) |
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.Id  }) 
     <a asp-action="Index">Back to List</a>
 </div>
